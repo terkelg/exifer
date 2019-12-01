@@ -25,13 +25,13 @@ const metadata = await exifer(img, { gps: tags.gps, exif: tags.exif });
 Type: `Object`
 
 
-### exif
+#### exif
 Type: `Object`
 
 Map with exif tags.
 
 
-### gps
+#### gps
 Type: `Object`
 
 Map with exif gps tags.
