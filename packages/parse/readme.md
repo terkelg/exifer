@@ -9,6 +9,18 @@
 $ npm install --save @exifer/parse
 ```
 
+This module exposes three module definitions:
+
+* **ES Module**: `dist/exif-parse.mjs`
+* **UMD**: `dist/exif-parse.umd.js`
+* **CommonJS**: `dist/exif-parse.js`
+
+The script can also be directly included from [unpkg.com](https://unpkg.com):
+```html
+<script src="https://unpkg.com/@exifer/parse"></script>
+```
+
+
 ## Usage
 
 ```js

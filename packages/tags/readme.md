@@ -9,6 +9,17 @@
 $ npm install --save @exifer/tags
 ```
 
+This module exposes three module definitions:
+
+* **ES Module**: `dist/exif-tags.mjs`
+* **UMD**: `dist/exif-tags.umd.js`
+* **CommonJS**: `dist/exif-tags.js`
+
+The script can also be directly included from [unpkg.com](https://unpkg.com):
+```html
+<script src="https://unpkg.com/@exifer/tags"></script>
+```
+
 ## Usage
 
 ```js
