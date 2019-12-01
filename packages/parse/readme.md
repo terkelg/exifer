@@ -1,6 +1,6 @@
 # @exifer/parse [![npm](https://img.shields.io/npm/v/@exifer/parse.svg)](https://npmjs.org/package/@exifer/parse)
 
-> Utitlity to transform exif data into meaningful human readable values. Not limited [exifer][exifer]!
+> Utitlity to transform exif data into a meaningful human readable format. Not limited to [exifer][exifer]!
 
 
 ## Install
@@ -12,39 +12,227 @@ $ npm install --save @exifer/parse
 ## Usage
 
 ```js
+import { Orientation, Contrast } from '@exifer/parse';
+
+Orientation(8);
+// ~> { rotation: 270, flipped: false },
+
+Contrast(1);
+// ~> `Soft`
+```
+
+Used directly with exif meta-data reader [exifer](exifer)
+```js
 import exifer from 'exifer';
-import parse from '@exifer/parse';
+import * as parse from '@exifer/parse';
 
-const tags = {
-	Orientation: 8,
-	SceneCaptureType: 1,
-	Contrast: 1,
-	MeteringMode: 4
-}
-
-const parsed = parse(tags);
+const metadata = await exifer(img, { parse });
 // {
 //   Orientation: { rotation: 270, flipped: false },
 //   SceneCaptureType: `Landscape`,
-//   Contrast: `gSoft`,
-//   MeteringMode: `gMultiSpot`
+//   Contrast: `Soft`,
+//   MeteringMode: `MultiSpot`
+//   ...
 // }
-
-
-// used directly with exifer
-const metadata = await exifer(img, { parse });
 ```
 
 ## API
 
-### parse(tags)
+Export an object of parsers for most Exif tags.
+The parser name correspond to the Exif tag name.
 
-#### tags
-Type: `Object`
+If a value cannot be parsed it will be returned as is.
 
-Hash map with exif values to transform.
+> [Exif Tags Reference](https://www.awaresystems.be/imaging/tiff/tifftags/privateifd.html)
 
-> **Important:** property names must match their exif tag name.
+
+### ColorSpace(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### GPSSpeed(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### GPSVersionID(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### GPSDateStamp(value)
+Returns: `String`
+
+#### value
+Type: `String`
+
+
+### GPSTimeStamp(value)
+Returns: `String`
+
+#### value
+Type: `String`
+
+
+### GPSTimeStamp(value)
+Returns: `String`
+
+#### value
+Type: `String`
+
+
+### DateTimeOriginal(value)
+Returns: `String`
+
+#### value
+Type: `String`
+
+
+### DateTimeDigitized(value)
+Returns: `String`
+
+#### value
+Type: `String`
+
+
+### ModifyDate(value)
+Returns: `String`
+
+#### value
+Type: `String`
+
+
+### ExifVersion(value)
+Returns: `String`
+
+#### value
+Type: `Array`
+
+
+### Orientation(value)
+Returns: `Object`
+
+#### value
+Type: `Number`
+
+
+### ExposureProgram(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### MeteringMode(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### LightSource(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### Flash(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### SensingMethod(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### SceneCaptureType(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### SceneType(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### CustomRendered(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### WhiteBalance(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### GainControl(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### Contrast(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### Saturation(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### Sharpness(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### SubjectDistanceRange(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### FileSource(value)
+Returns: `String`
+
+#### value
+Type: `Number`
+
+
+### Components(value)
+Returns: `String`
+
+#### value
+Type: `Number`
 
 
 ## License

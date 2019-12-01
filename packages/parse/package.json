@@ -12,10 +12,8 @@
   ],
   "scripts": {
     "dev": "rollup -c -w",
-    "test": "tape -r esm test/*.js | tap-spec",
-    "build": "eliminate dist && rollup -c",
-    "pretest": "npm run build",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build",
+    "build": "eliminate dist && rollup -c"
   },
   "keywords": [
     "img",
@@ -35,9 +33,9 @@
   "license": "MIT",
   "devDependencies": {
     "eliminate": "^1.1.1",
-    "esm": "^3.2.25",
-    "rollup": "^1.20.3",
-    "tap-spec": "^5.0.0",
-    "tape": "^4.11.0"
+    "rollup": "^1.20.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

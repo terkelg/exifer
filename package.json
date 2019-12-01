@@ -6,9 +6,14 @@
     "url": "https://terkel.com"
   },
   "scripts": {
-    "test": "npm run exifer && npm run parse && npm run tags",
-    "exifer": "cd packages/exifer && npm run test",
-    "parse": "cd packages/parse && npm run test",
-    "tags": "cd packages/tags && npm run test"
+    "pretest": "lerna bootstrap",
+    "prepublish": "cp readme.md packages/exifer/.",
+    "test": "tape -r esm tests/*.js | tap-spec"
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "lerna": "^3.19.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
   }
 }
