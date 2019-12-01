@@ -1,0 +1,35 @@
+export const exif = {
+	0x8827: 'ISO',
+	0x010F: 'Make',
+	0x0110: 'Model',
+	0x9209: 'Flash',
+	0xA500: 'Gamma',
+	0x829D: 'FNumber',
+	0x8825: 'GPSInfo',
+	0x0131: 'Software',
+	0xA301: 'SceneType',
+	0x0132: 'ModifyDate',
+	0x8769: 'ExifOffset',
+	0x9290: 'SubSecTime',
+	0xA001: 'ColorSpace',
+	0x0112: 'Orientation',
+	0x011A: 'XResolution',
+	0x011B: 'YResolution',
+	0x9207: 'MeteringMode',
+	0x9202: 'ApertureValue',
+	0x9217: 'SensingMethod',
+	0x0128: 'ResolutionUnit',
+	0x8822: 'ExposureProgram',
+	0x9203: 'BrightnessValue',
+	0xA002: 'PixelXDimension',
+	0xA003: 'PixelYDimension',
+	0x9003: 'DateTimeOriginal',
+	0x9201: 'ShutterSpeedValue',
+	0x9204: 'ExposureBiasValue',
+}
+
+export const gps = {
+	0x0002: 'GPSLatitude',
+	0x0006: 'GPSAltitude',
+	0x0004: 'GPSLongitude'
+}

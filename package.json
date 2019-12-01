@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "author": {
+    "name": "Terkel Gjervig",
+    "email": "terkel@terkel.com",
+    "url": "https://terkel.com"
+  },
+  "scripts": {
+    "test": "npm run exifer && npm run parse && npm run tags",
+    "exifer": "cd packages/exifer && npm run test",
+    "parse": "cd packages/parse && npm run test",
+    "tags": "cd packages/tags && npm run test"
+  }
+}

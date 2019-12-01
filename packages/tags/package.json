@@ -1,0 +1,47 @@
+{
+  "name": "exifer",
+  "version": "0.0.0-beta.2",
+  "repository": "terkelg/exifer",
+  "description": "Small exif meta-data decipher",
+  "main": "dist/exifer.js",
+  "module": "dist/exifer.mjs",
+  "browser": "dist/exifer.umd.js",
+  "unpkg": "dist/exifer.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "test": "tape -r esm test/*.js | tap-spec",
+    "build": "eliminate dist && rollup -c",
+    "pretest": "npm run build",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "dom",
+    "img",
+    "jpg",
+    "gps",
+    "form",
+    "file",
+    "meta",
+    "exif",
+    "tiff",
+    "jpeg",
+    "input",
+    "image",
+    "photo",
+    "uplaod",
+    "picture",
+    "rotation",
+    "metadata"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eliminate": "^1.1.1",
+    "esm": "^3.2.25",
+    "rollup": "^1.20.3",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  }
+}
