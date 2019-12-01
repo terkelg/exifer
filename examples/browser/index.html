@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/" />
+  </head>
+
+  <body>
+    Read Exif image data. Select image:
+    <input type="file" class="file" accept="image/*">
+		<hr>
+		<code class="result"></code>
+		<script type="module">
+			import exifer from 'https://unpkg.com/exifer';
+
+			const picker = document.querySelector('.file');
+			const result = document.querySelector('.result');
+
+			picker.addEventListener('change', async () => {
+				const file = picker.files[0];
+				const parsed = await exifer(file);
+				result.innerHtml = JSON.stringify(parsed, null, 2);
+			});
+		</script>
+  </body>
+</html>
