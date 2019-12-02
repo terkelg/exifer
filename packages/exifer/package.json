@@ -1,6 +1,6 @@
 {
   "name": "exifer",
-  "version": "0.0.0-beta.2",
+  "version": null,
   "repository": "terkelg/exifer",
   "description": "Small exif meta-data decipher",
   "main": "dist/exifer.js",

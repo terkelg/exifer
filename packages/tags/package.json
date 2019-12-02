@@ -1,6 +1,6 @@
 {
   "name": "@exifer/tags",
-  "version": "0.0.0-beta.2",
+  "version": null,
   "repository": "terkelg/exifer",
   "description": "List of Exif meta-data tags",
   "main": "dist/exif-tags.js",
