@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="exifer.png" alt="exifer" width="350" />
+  <img src="exifer.png" alt="exifer" width="250" />
 </p>
 
 <p align="center">
@@ -8,9 +8,6 @@
   </a>
   <a href="https://unpkg.com/exifer">
     <img src="http://img.badgesize.io/https://unpkg.com/exifer/dist/exifer.mjs?compression=gzip" alt="gzip size" />
-  </a>
-  <a href="https://github.com/terkelg/exifer/blob/master/LICENSE">
-    <img src="https://img.shields.io/npm/l/exifer.svg" alt="license" />
   </a>
   <a href="https://github.com/terkelg/exifer/blob/master/package.json">
     <img src="https://img.shields.io/badge/dependencies-none-ff69b4.svg" alt="dependencies" />

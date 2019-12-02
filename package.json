@@ -7,7 +7,7 @@
   },
   "scripts": {
     "pretest": "lerna bootstrap",
-    "prepublish": "cp readme.md packages/exifer/.",
+    "prepublishOnly": "cp readme.md packages/exifer/.",
     "test": "tape -r esm tests/*.js | tap-spec"
   },
   "devDependencies": {
