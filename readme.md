@@ -17,25 +17,24 @@
   </a>
 </p>
 
-<p align="center"><b>A small 1.5kb exif meta-data reader</b></p>
+<p align="center"><b>A lightweight Exif meta-data decipher</b></p>
+
+Exif is the meta data inside JPEG images. It contains useful iformation like rotation, gps, iso, flipping etc.
+Exifer is a small library that parses image files and extracts the metadata. It works both in the browser and node.js.
+
+Out of the box exifer only reads the most essential tags which should cover most usecases.
+If you want to read all tags and parse them, [@exifer/tags]() and @[exifer/parsers]() have you covered.
+
+> Learn more about [Exif](https://en.wikipedia.org/wiki/Exif)
 
 
-Exifer do not analyze or parse the data. It's up to you as a consumer. I find it uncessecary in most use-cases. It's easier to build logic around numbers than magic strings.
+## Features
 
-Handy when you want to extract features from an image before upload, chekc rotation etc.
-
-**~~lack of~~ Features**
-- Small
-- Vanilla JS
-- Works on both server and client side
+- Lightweight
+- Extract GPS/location data
+- Extract EXIF data
+- Works on both node.js and browser
 - Zero Dependencies
-
-
-## Install
-
-```
-$ npm install exifer
-```
 
 This module exposes three module definitions:
 
@@ -43,13 +42,10 @@ This module exposes three module definitions:
 * **UMD**: `dist/exifer.umd.js`
 * **CommonJS**: `dist/exifer.js`
 
-Include skaler:
-```js
-// ES6
-import exifer from 'exifer'
+## Install
 
-// CJS
-const exifer = require('exifer');
+```
+$ npm install exifer
 ```
 
 The script can also be directly included from [unpkg.com](https://unpkg.com):
@@ -61,7 +57,7 @@ The script can also be directly included from [unpkg.com](https://unpkg.com):
 ## Usage
 
 ```js
-import exifer from 'exifer';
+import exifer from 'exifer'
 
 /**
  * Assume 'input' is the value coming from an input field:
@@ -81,11 +77,20 @@ const file = await exifer(input);
 
 ```
 
+## Tags
+
+## Parsing
+
 
 ## API
 
 ### exifer(input, options={})
 Returns: `object` <_Promise_>
+
+
+
+Exifer do not analyze or parse the data. I find it uncessecary in most use-cases. It's easier to build logic around numbers than magic strings.
+
 
 Reutnrs promise that resolves to the resized [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) object.
 
