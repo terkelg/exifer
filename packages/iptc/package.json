@@ -1,0 +1,42 @@
+{
+  "name": "@exifer/iptc",
+  "version": "1.0.0-beta.2",
+  "repository": "terkelg/exifer",
+  "description": "IPTC tags and parsers",
+  "main": "dist/exifer-iptc.js",
+  "module": "dist/exifer-iptc.mjs",
+  "browser": "dist/exifer-iptc.umd.js",
+  "unpkg": "dist/exifer-iptc.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build",
+    "build": "eliminate dist && rollup -c"
+  },
+  "keywords": [
+    "img",
+    "jpg",
+    "gps",
+    "file",
+    "tags",
+    "meta",
+    "exif",
+    "tiff",
+    "jpeg",
+    "image",
+    "parse",
+    "photo",
+    "picture",
+    "metadata"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eliminate": "^1.1.1",
+    "rollup": "^1.20.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

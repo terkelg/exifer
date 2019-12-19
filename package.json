@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "author": {
+    "name": "Terkel Gjervig",
+    "email": "terkel@terkel.com",
+    "url": "https://terkel.com"
+  },
+  "scripts": {
+    "copy": "cp readme.md packages/exifer/.",
+    "deps": "for D in packages/*; do npm install; done",
+    "test": "tape -r esm tests/*.js | tap-spec",
+    "report": "nyc npm test && nyc report --reporter=html --exclude=\"tests/*.js\""
+  },
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "jsdom": "^15.2.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.12.0"
+  }
+}

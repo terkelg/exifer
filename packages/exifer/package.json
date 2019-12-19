@@ -1,0 +1,47 @@
+{
+  "name": "exifer",
+  "version": "1.0.0-beta.2",
+  "repository": "terkelg/exifer",
+  "description": "A lightweight Exif image meta-data decipher",
+  "main": "dist/exifer.js",
+  "module": "dist/exifer.mjs",
+  "browser": "dist/exifer.umd.js",
+  "unpkg": "dist/exifer.umd.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build",
+    "build": "eliminate dist && rollup -c"
+  },
+  "keywords": [
+    "dom",
+    "img",
+    "jpg",
+    "tif",
+    "gps",
+    "xmp",
+    "form",
+    "file",
+    "meta",
+    "exif",
+    "iptc",
+    "tiff",
+    "jpeg",
+    "input",
+    "image",
+    "photo",
+    "picture",
+    "rotation",
+    "metadata"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eliminate": "^1.1.1",
+    "rollup": "^1.20.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
