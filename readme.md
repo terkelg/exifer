@@ -142,7 +142,6 @@ const parsed = await exifer(buffer, {tags: { gps }});
 //    GPSTimeStamp: 1970-01-01T19:06:58.000Z
 //    ...
 // }
-}
 ```
 
 
@@ -246,7 +245,7 @@ Set `raw` to `true` to get the raw tag value.
 Type: `Function`<br>
 
 Custom parser function. Use this to transform tag values.
-Input is a ASCII string unless `raw` is `true`. 
+Input is a ASCII string unless `raw` is `true`.
 
 The returned output is used in the final result object returned by [exifer](packages/exifer).
 
