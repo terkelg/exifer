@@ -20,8 +20,6 @@
 			const picker = document.querySelector('.file');
 			const result = document.querySelector('.result');
 
-			const Parser = new DOMParser();
-
 			picker.addEventListener('change', async () => {
 				const file = picker.files[0];
 				const parsed = await exifer(file, {tags: {exif, iptc, gps}});
