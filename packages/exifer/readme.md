@@ -24,14 +24,12 @@
 
 Exif tags/fields are used to encode additional information into images taken by digital still cameras. The exif meta information is organized into different Image File Directories (IFD's) within the image. It contains useful information like image rotation, GPS coordinates, times stamps. ISO, etc.
 
-> Learn more about [exif](https://en.wikipedia.org/wiki/Exif) tags
-
 
 ## Features
 
 - 📦 **Lightweight**: Small with zero Dependencies
 - 🔍 **Extract** Exif, GPS, XMP and IPTC
-- 📷 **Files**: Support both JPEG and TIFF files
+- 📷 **Files**: Support both JPEG, DNG and TIFF files
 - 📚 **Add-ons**: Extra tags and parsers [available](#add-ons)
 - ♻️ **Isomorphic**: Works in node.js and the browser
 
@@ -71,15 +69,17 @@ const tags = await exifer(buffer);
 // }
 ```
 
+> **OBS**: Exifer only reads a few tags by default. You can add [your own](#optstags) or use [add-on modules](#add-ons) to read and parse additional tags.
+
 
 ## API
 
 ### exifer(input, [opts])
 Returns: `object` <_Promise_>
 
-Takes a JPEG or JIFF image as input and returns an object with extracted meta-data. A `Promise` is returned that resolves to an hash-map of tag/value pairs.
+Takes a JPEG, DNG or JIFF image as input and returns an object with extracted meta-data. A `Promise` is returned that resolves to an hash-map of tag/value pairs.
 
-Exifer only reads the most essential tags out of the box – which should cover 99% of all use cases. Tags are by default interpreted as ASCII strings.
+Exifer only reads the most essential tags out of the box – which should cover 99% of all use cases.
 
 To read or parse more tags chekcout [`opts.tags`](#optstags).
 
@@ -107,20 +107,32 @@ Example running in node.js reading a JPEG [`Buffer`](https://nodejs.org/api/buff
 import exifer from 'exifer';
 import fs from 'fs';
 
-const buffer = fs.readFileSync('photo.jpg');;
+const buffer = fs.readFileSync('photo.jpg');
 const tags = await exifer(buffer);
 ```
+
+It's recomended to only feed Exifer some of the image buffer when dealing with very large files. The first 500kb should be enough in most cases:
+
+```js
+import exifer from 'exifer';
+import fs from 'fs';
+
+const full = fs.readFileSync('photo.jpg');
+const slice = full.buffer.slice(0, 0.5 * 1024 * 1024);
+const tags = await exifer(slice);
+```
+
 
 #### opts.tags
 Type: `object`<br>
 
 Exifer does not extract more than the most essential tags.
 
-You can extract additional tags, or overwrite the [default tags](packages/exifer/src/tags.js), if you want to read more tags or write custom parsers. You can do this by passing [`tag objects`](#tag) to either `tags.exif`, `tags.gps` and/or `tags.iptc`.
+You can extract additional tags, or overwrite the [default tags](packages/exifer/src/tags.js), if you want to read more tags than what's provided by default or wamt custom parsers. You can do this by passing [`tag objects`](#tag) to either `tags.exif`, `tags.gps` and/or `tags.iptc`.
 
 The key for additional IFD image tags is the IFD field code in hexadecimal notation. The value is a [tag object](#tag) with at least a `name` property.
 
-Here's an example where two custom gps [tag objects](#tags) passed as `tags.gps`:
+Here's an example where Exifer is instructed to read two additional gps tags. They are passed as [tag objects](#tags) to `tags.gps`:
 
 ```js
 import exifer from 'exifer';
@@ -142,7 +154,6 @@ const parsed = await exifer(buffer, {tags: { gps }});
 //    GPSTimeStamp: 1970-01-01T19:06:58.000Z
 //    ...
 // }
-}
 ```
 
 
@@ -246,7 +257,7 @@ Set `raw` to `true` to get the raw tag value.
 Type: `Function`<br>
 
 Custom parser function. Use this to transform tag values.
-Input is a ASCII string unless `raw` is `true`. 
+Input is a ASCII string unless `raw` is `true`.
 
 The returned output is used in the final result object returned by [exifer](packages/exifer).
 
