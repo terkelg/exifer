@@ -23,9 +23,20 @@ test(`exports`, t => {
 	t.end();
 });
 
-test(`read :: buffer`, async t => {
+test(`read :: Buffer`, async t => {
 	const buffer = fs.readFileSync(join(fixtures, `photo.jpg`));
 	const x = await exifer(buffer);
+	t.is(typeof x, `object`);
+	t.is(x.Make, `Apple`);
+	t.is(x.Model, `iPhone X`);
+	t.is(x.Software, `12.4`);
+	t.end();
+});
+
+test(`read :: Partial buffer`, async t => {
+	const full = fs.readFileSync(join(fixtures, `photo.jpg`));
+	const slice = full.buffer.slice(0, 0.5 * 1024 * 1024);
+	const x = await exifer(slice);
 	t.is(typeof x, `object`);
 	t.is(x.Make, `Apple`);
 	t.is(x.Model, `iPhone X`);
