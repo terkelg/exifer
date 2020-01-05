@@ -126,6 +126,13 @@ test(`read :: empty file`, async t => {
 	t.end();
 });
 
+test(`read :: Large DNG`, async t => {
+	const buffer = fs.readFileSync(join(fixtures, `dng.dng`));
+	const x = await exifer(buffer);
+	t.is(x.Model, `NIKON D800`);
+	t.end();
+});
+
 test(`read :: minimal broken TIFF`, async t => {
 	try {
 		const buffer = fs.readFileSync(join(fixtures, `tiny.tif`));
