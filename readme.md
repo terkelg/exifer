@@ -54,10 +54,10 @@ The script can also be directly included from [unpkg.com](https://unpkg.com):
 ## Usage
 
 ```js
-import exifer from 'exifer'
+import exifer from 'exifer';
 import fs from 'fs';
 
-const buffer = fs.readFileSync('photo.jpg');;
+const buffer = fs.readFileSync('photo.jpg');
 const tags = await exifer(buffer);
 // {
 //   Make: 'Apple',
