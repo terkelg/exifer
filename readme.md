@@ -7,7 +7,7 @@
     <img src="https://badgen.now.sh/npm/v/exifer" alt="version" />
   </a>
   <a href="https://github.com/terkelg/exifer/actions">
-    <img src="https://badgen.now.sh/github/status/terkelg/exifer" alt="build status" />
+    <img src="https://github.com/terkelg/exifer/workflows/Integration/badge.svg" alt="integration status" />
   </a>
   <a href="https://codecov.io/gh/terkelg/exifer">
     <img src="https://badgen.now.sh/codecov/c/github/terkelg/exifer" alt="codecov" />
