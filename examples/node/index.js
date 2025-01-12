@@ -1,8 +1,8 @@
-const exifer = require('../../packages/exifer/dist/exifer.js');
+const exifer = require('exifer');
 
-const gps = require('../../packages/gps/dist/exifer-gps.js');
-const exif = require('../../packages/exif/dist/exifer-exif.js');
-const iptc = require('../../packages/iptc/dist/exifer-iptc.js');
+const gps = require('@exifer/gps');
+const exif = require('@exifer/exif');
+const iptc = require('@exifer/iptc');
 
 const {join} = require('path');
 const fs = require('fs');
