@@ -208,3 +208,21 @@ test(`stress test`, async t => {
 	t.is(x.ResolutionUnit, `inches`);
 	t.end();
 });
+
+// JPEG with an APP13 (Photoshop 3.0) IPTC block whose first byte is not the 0x1c tag marker.
+function jpegWithIptc(iptcData) {
+	const block = [...Buffer.from(`Photoshop 3.0\0`), ...Buffer.from(`8BIM`), 0x04, 0x04, 0, 0, 0, 0, 0, iptcData.length, ...iptcData];
+	return new Uint8Array([0xff, 0xd8, 0xff, 0xed, 0, block.length + 2, ...block, 0xff, 0xd9]).buffer;
+}
+
+test(`malformed :: IPTC block without tag marker terminates`, async t => {
+	const x = await exifer(jpegWithIptc([0x00, 0x02, 0x00, 0x00, 0x00, 0x00]));
+	t.is(typeof x, `object`);
+	t.end();
+});
+
+test(`malformed :: truncated TIFF header`, async t => {
+	const x = await exifer(new Uint8Array([0x49, 0x49, 0x2a, 0x00, 0x08]).buffer);
+	t.deepEqual(x, {});
+	t.end();
+});

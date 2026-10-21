@@ -60,9 +60,13 @@ export const viewToString = (view, offset, count) => arrayToString(viewToValue(v
 
 export function viewToValue(view, {offset, type = TYPES.byte, count, littleEndian}) {
 	const value = [];
+	const size = SIZES[type];
+	// Guard against attacker-controlled offset/count (e.g. malformed IPTC data) reading
+	// past the end of the view, which would throw a RangeError on DataView access.
+	if (!size || offset < 0 || offset + size * count > view.byteLength) return value;
 	for (let valueIndex = 0; valueIndex < count; valueIndex++) {
 		value.push(read[type](view, offset, littleEndian));
-		offset += SIZES[type];
+		offset += size;
 	}
 	return value;
 }

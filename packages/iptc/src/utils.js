@@ -3,7 +3,9 @@ export const generic = map => input => map[input] || input;
 export const int16u = x => parseInt(((x[0] << 8) + x[1]).toString());
 
 export const timeISO8601 = time => {
-	const [, hh, mm, ss, zone] = time.match(/(\d{2})(\d{2})(\d{2})([-+]\d{4})?/);
+	const match = typeof time === 'string' && time.match(/(\d{2})(\d{2})(\d{2})([-+]\d{4})?/);
+	if (!match) return time;
+	const [, hh, mm, ss, zone] = match;
 	return new Date(`1970-01-01T${hh}:${mm}:${ss}${zone || '+0000'}`);
 };
 
