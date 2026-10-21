@@ -36,8 +36,11 @@ function readTags(view, naaSize, dataOffset, tags) {
 	const result = {};
 	dataOffset += RESOURCE_BLOCK_HEADER_SIZE;
 	const endOfBlockOffset = dataOffset + naaSize;
-	while (dataOffset < endOfBlockOffset && dataOffset < view.byteLength) {
-		if (isLeadByteMissing(view, dataOffset)) continue;
+	while (dataOffset < endOfBlockOffset && dataOffset + TAG_HEADER_SIZE <= view.byteLength) {
+		// IPTC NAA tags are contiguous; a missing lead byte means the end of the dataset.
+		// `break` (not `continue`) here prevents an infinite loop, since `continue` would
+		// skip the dataOffset advance below and never move the cursor.
+		if (isLeadByteMissing(view, dataOffset)) break;
 		const tag = view.getUint16(dataOffset + TAG_CODE_OFFSET, false);
 		const count = view.getUint16(dataOffset + TAG_SIZE_OFFSET, false);
 		const value = viewToValue(view, {offset: dataOffset + TAG_HEADER_SIZE, count});
